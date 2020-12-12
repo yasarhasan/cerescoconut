@@ -1,0 +1,135 @@
+
+{% macro get_children(category, currentScopeUrl, level, megaMenuLevels, maxItems) %}
+    {% set megaMenuLevels = megaMenuLevels | default(1) %}
+    {% set maxItems = maxItems | default({"1": 30, "2": 30, "3": 2}) %}
+    {% import _self as childlist %}
+    {% set counter = 0 %}
+    {% if level < megaMenuLevels %}
+        {% for child in category.children %}
+            {% if (child.details | length > 0) %}
+                {% if level == 1 %}
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"><div class="katmama">
+                {% endif %}
+                    <div class="level{{ level }}">
+                        {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
+                        <a @touchstart.stop href="{{ newScope }}{{ urls.trailingSlashSuffix }}" class="tes1">{{ child.details[0].name }}</a>
+                    </div>
+                    {% if child.children %}
+                        {{ childlist.get_children(child, newScope, level + 1, megaMenuLevels, maxItems) }}
+                    {% endif %}
+                {% if level == 1 %}
+              </div></div>
+                {% endif %}
+                {% set counter = counter + 1 %}
+
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro get_nav_bar(categories, currentScopeUrl, megaMenuLevels, maxItemsPerStage) %}
+    {% import _self as navbar %}
+    {% set counter = 0 %}
+    {% set megaMenuLevels = megaMenuLevels | default(1) %}
+
+    {% for category in categories %}
+
+        {% if category.details | length > 0 %}
+
+            {% if urls.includeLanguage %}
+                {% set currentScopeUrl = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
+            {% else %}
+                {% set currentScopeUrl = "/" ~ category.details[0].nameUrl %}
+            {% endif %}
+            {% set translatedChildren = 0 %}
+            {% for children in category.children if children.details[0] %}
+                {% set translatedChildren = translatedChildren + 1 %}
+            {% endfor %}
+
+            {% if category.children and translatedChildren > 0 %}
+
+
+
+
+
+                        {% set counter = counter + 1 %}
+                        {% if megaMenuLevels == 1 %}
+                            {% for child in category.children %}
+                                {% if child.details | length > 0 %}
+                                    <li>
+                                        <a href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" class="tes3">{{ child.details[0].name }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {{ navbar.get_children(category, currentScopeUrl, 1, megaMenuLevels, maxItemsPerStage) }}
+                        {% endif %}
+
+
+
+            {% else %}
+
+
+                    <a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" class="tes4">{{ category.details[0].name }}</a>
+
+
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+{% endmacro %}
+
+
+
+{% macro get_sidemenu(breadcrumbs, categories, currentScopeUrl) %}
+
+
+    {% import _self as sidemenu %}
+    {% set urlNow = currentScopeUrl %}
+
+{% set counter = 0 %}
+
+    {% for category in categories %}
+{% set counter = counter + 1 %}
+        {% set urlNow =  currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
+
+
+
+        {% if category.details | length > 0 %}
+        <li class="item">
+
+
+
+{% if category.children is not empty %}
+
+<a class="{% if category.id == 1147 %}produktkat{% endif %} baslikmenu" data-toggle="collapse" data-target="#{{ category.details[0].nameUrl }}" {% if category.id == 1147 %} aria-expanded="true" {% else %} aria-expanded="false" {% endif %} role="status">
+{{ category.details[0].name }}</a>
+{% else %}
+<a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="altmenu">{{ category.details[0].name }}</a>
+{% endif %}
+
+  {% if category.children is not empty %}
+            <span class="arrow {% if category.id != 1147 %} collapsed {% endif %}" data-toggle="collapse" data-target="#{{ category.details[0].nameUrl }}" {% if category.id == 1147 %} aria-expanded="true" {% else %} aria-expanded="false" {% endif %} role="status">
+                <i class="zmdi zmdi-minus"></i>
+                <i class="zmdi zmdi-plus"></i>
+            </span>
+
+            <div class="subCategory collapse {% if category.id == 1147 %}show{% endif %}" id="{{ category.details[0].nameUrl }}" aria-expanded="true" role="status">
+                <div class="menu-items">
+
+
+
+                    <ul {% if category.children is empty %} class="altu"{% endif %}>
+                        {{ sidemenu.get_sidemenu(breadcrumbs, category.children, urlNow) }}
+
+
+                    </ul>
+                </div>
+            </div>
+  {% endif %}
+        </li>
+        {% endif %}
+
+    {% endfor %}
+
+{% endmacro %}

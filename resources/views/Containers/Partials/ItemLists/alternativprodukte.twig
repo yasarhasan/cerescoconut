@@ -1,0 +1,25 @@
+{{ component( "CeresCoconut::Containers.Components.LastSeenItemList" ) }}
+{{ component( "CeresCoconut::ItemList.Components.CategoryItem2") }}
+{{ component( "CeresCoconut::PageDesign.Components.Carousel" ) }}
+
+{% set listType = config("Ceres.item.lists." ~ itemListNo ~ ".list_type") %}
+{% set tagIds = config("Ceres.item.lists." ~ itemListNo ~ ".tag_ids") | split(",") %}
+{% set tagSorting = config("Ceres.item.lists.tag_sorting") %}
+{% set isHome = services.template.isHome() %}
+
+{% if listType == "cross_selling" %}
+    {% set itemList = item.CrossSellingItems.documents %}
+{% elseif listType == "tag_list" %}
+    {% set itemList = services.itemList.getItemList( listType, tagIds ).documents %}
+{% endif %}
+
+
+
+                {% for item in itemList %}
+
+                        <category-item2
+                            item-data="{{ item.data | json_data }}"
+                            :decimal-count="2">
+                        </category-item2>
+
+                {% endfor %}

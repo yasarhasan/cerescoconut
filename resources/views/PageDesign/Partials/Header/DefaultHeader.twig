@@ -1,0 +1,119 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+<!--
+<div style="position:fixed;background:red;color:#fff;text-align:center;padding: 5px 0;z-index: 99999;width: 100%;font-size: 12px;">
+Aus technischen Gründen können zur Zeit keine Bestellungen & Registrierung über unseren Onlineshop ausgeführt werden. Anfragen gerne per E-Mail oder Telefon.
+</div>
+-->
+<header id="page-header">
+        <!-- header left mobie -->
+        <div class="header-mobile d-md-none">
+            <div class="mobile hidden-md-up text-xs-center d-flex align-items-center justify-content-around">
+
+                <!-- menu left -->
+                <div id="mobile_mainmenu" class="item-mobile-top">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+
+                <!-- logo -->
+                <div class="mobile-logo">
+                    <a href="{{ homepageURL }}">
+                        <img class="logo-mobile img-fluid" src="/layout/ceres1/daten/dekuweiss.svg" alt="dekushop" style="max-height:30px">
+                    </a>
+                </div>
+
+                <!-- menu right -->
+                <div class="mobile-menutop" data-target="#mobile-pagemenu">
+                    <i class="zmdi zmdi-more"></i>
+                </div>
+            </div>
+
+            <!-- search -->
+            <div id="mobile_search" class="d-flex">
+                <div id="mobile_search_content">
+<item-search template="#vue-item-search"></item-search>
+                </div>
+                <div class="desktop_cart">
+                    <div class="blockcart block-cart cart-preview tiva-toggle">
+                        <div class="header-cart tiva-toggle-btn">
+<a href="/basket">
+
+                          <span v-basket-item-quantity="$store.state.basket.data.itemQuantity" class="cart-products-count">0</span>
+                          <i v-waiting-animation="$store.state.basket.isBasketLoading" waiting-class="fa fa-refresh fa-spin" class="fa fa-shopping-cart" aria-hidden="true"></i>
+  </a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- header desktop -->
+<!-- *PLENTY  außer START style... --> <div class="header-top d-xs-none" {% if not services.template.isHome() %}style="position:relative;"{% endif %}>
+            <div class="container">
+                <div class="row">
+<!-- logo -->
+<div class="col-sm-2 col-md-2 d-flex align-items-center">
+<div id="logo"><a href="{{ homepageURL }}"><img class="img-fluid" src="/layout/ceres1/daten/dekulogo.svg" alt="logo"></a></div>
+</div>
+
+<!-- menu -->
+<div class="main-menu col-sm-4 col-md-5 align-items-center justify-content-center navbar-expand-md">
+
+<div class="menu navbar collapse navbar-collapse">
+<ul class="menu-top navbar-nav">
+  <li class="nav-link"><a href="{{ homepageURL }}" class="parent">Startseite</a></li>
+  <li>
+  	<a href="#" class="parent">Unternehmen</a>
+  	<div class="dropdown-menu">
+  	<ul>
+      <li class="item"><a href="{{ services.category.getURLById(1444) }}" title="">Über Uns</a></li>
+      <li class="item"><a href="{{ services.category.getURLById(1445) }}" title="">Leasing & Finanzierung</a></li>
+      <li class="item"><a href="{{ services.category.getURLById(1446) }}" title="">Kauf auf Rechnung</a></li>
+      <li class="item"><a href="{{ urls.contact }}" title="">Kontakt</a></li>
+  	</ul>
+  	</div>
+  </li>
+  <li><a href="/onlineshop" class="parent">Onlineshop</a></li>
+  <li><a href="{{ services.category.getURLById(1439) }}" class="parent">Preisanfrage</a></li>
+</ul>
+
+</div>
+<!--
+{% include "CeresCoconut::PageDesign.Partials.Header.Navigation" %}
+-->
+</div>
+
+<div id="search_widget" class="col-sm-6 col-md-5 align-items-center justify-content-end d-flex">
+	<!-- SUCHE -->
+
+	<item-search template="#vue-item-search"></item-search>
+
+
+	<!-- MEIN KONTO / REGISTRIEREN -->
+	<user-login-handler> </user-login-handler>
+
+	<!-- WARENKORB -->
+	<div class="desktop_cart">	<div class="blockcart block-cart cart-preview">
+	<div class="header-cart">
+	<a v-toggle-basket-preview href="#" class="toggle-basket-preview">
+	<span v-basket-item-quantity="$store.state.basket.data.itemQuantity" class="cart-products-count">0</span>
+	<i v-waiting-animation="$store.state.basket.isBasketLoading" waiting-class="fa fa-refresh fa-spin" class="fa fa-shopping-cart" aria-hidden="true"></i>
+	</a>
+	</div>
+	{% if config("Ceres.basket.preview_type") != "right" %}
+	<basket-preview template="#vue-basket-preview-hover" :show-net-prices="{{ showNetPrices | json_encode }}"></basket-preview>
+	{% endif %}
+	</div></div>
+</div>
+
+		 </div>
+            </div>
+        </div>
+    </header>
+
+
+
+{% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() %}
+    {% include "CeresCoconut::PageDesign.Partials.Header.Breadcrumb" %}
+{% endif %}

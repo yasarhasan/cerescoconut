@@ -1,0 +1,22 @@
+<!-- menu mobie left -->
+    <div class="mobile-top-menu d-md-none">
+        <button type="button" class="close" aria-label="Close">
+            <i class="zmdi zmdi-close"></i>
+        </button>
+        <div class="tiva-verticalmenu block" data-count_showmore="17">
+            <div class="box-content block-content">
+                <div class="verticalmenu" role="navigation">
+                    <ul class="menu level1">
+                        {{  include('CeresCoconut::PageDesign.Partials.Header.SideNavigation.twig')  }}
+
+                    </ul>
+                </div>
+
+<div class="row mt-3">
+<div class="col-6"><div><a href="{{ services.category.getURLById(1444) }}" rel="nofollow" title="Unternehmen" class="btn btn-primary btn-block" style="font-size: 0.8rem;">Unternehmen</a></div></div>
+<div class="col-6"><div><a href="{{ urls.contact }}" rel="nofollow" title="Kontakt" class="btn btn-primary btn-block" style="font-size: 0.8rem;">Kontakt</a></div></div>
+</div>
+
+            </div>
+        </div>
+    </div>

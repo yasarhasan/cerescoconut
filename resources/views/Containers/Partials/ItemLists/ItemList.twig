@@ -1,0 +1,40 @@
+{{ component( "CeresCoconut::Containers.Components.LastSeenItemList" ) }}
+{{ component( "CeresCoconut::ItemList.Components.CategoryItem") }}
+{{ component( "CeresCoconut::PageDesign.Components.Carousel" ) }}
+
+{% set listType = config("Ceres.item.lists." ~ itemListNo ~ ".list_type") %}
+{% set tagIds = config("Ceres.item.lists." ~ itemListNo ~ ".tag_ids") | split(",") %}
+{% set tagSorting = config("Ceres.item.lists.tag_sorting") %}
+{% set isHome = services.template.isHome() %}
+
+{% if listType == "cross_selling" %}
+    {% set itemList = services.itemList.getItemList( listType, item.documents[0].data.item.id ).documents %}
+{% elseif listType == "tag_list" %}
+    {% set itemList = services.itemList.getItemList( listType, tagIds ).documents %}
+{% endif %}
+
+
+
+{% if itemListNo == 1 and item > 1 in itemList %}
+<div class="row"><div class="col-md-12"><div style="margin-top:40px;">
+<div class="title-product"><p style="text-align:center;font-size: 16px;color: #000;">Alternativprodukte</p></div>
+<ul class="product-list">
+{% endif %}
+
+                {% for item in itemList %}
+                    <li class="col-12 col-sm-6 col-md-4 col-lg-3 item">
+                      <category-item
+                          :item-data="{{ item.data | json_encode }}"
+                          :decimal-count="{{ ceresConfig.item.storeSpecial }}"
+                          :disable-carousel-on-mobile="true">
+                          <template #before-prices>{{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}</template>
+                          <template #after-prices>{{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}</template>
+                      </category-item>
+                    </li>
+                {% endfor %}
+
+{% if itemListNo == 1 and item > 1 in itemList %}
+</ul>
+</div>
+</div></div>
+{% endif %}

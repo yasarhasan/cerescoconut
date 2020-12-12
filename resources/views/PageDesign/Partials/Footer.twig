@@ -1,0 +1,170 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+
+
+<!-- footer -->
+<footer class="footer-one">
+<div class="inner-footer">
+<div class="container">
+<div class="footer-top col-lg-12 col-xs-12">
+<div class="row">
+
+<div class="tiva-html col-lg-4 col-md-12 col-xs-6">
+	<div class="block m-top">
+	<div class="block-content"><p class="logo-footer"><img src="/layout/ceres1/daten/dekulogo.svg" alt="Reinigungsbedarf"></p></div>
+	</div>
+
+	<div class="block">
+	<div class="block-content">
+	<ul>
+	<li><a href="{{ services.category.getURLById(1443) }}">Hilfe</a></li>
+	<li><a href="{{ services.category.getURLById(1123) }}">Zahlung & Versand</a></li>
+	<li><a href="{{ urls.contact }}">Kontakt</a></li>
+	<li><a href="{{ urls.gtc }}">AGB</a></li>
+	<li><a href="{{ urls.legalDisclosure }}">Impressum</a></li>
+	<li><a href="{{ urls.cancellationRights }}">Widerrufsrecht</a></li>
+	<li><a href="{{ urls.cancellationForm }}">Widerrufsformular</a></li>
+	<li><a href="{{ urls.privacyPolicy }}">Datenschutzerklärung</a></li>
+	<li><a href="{{ services.category.getURLById(1293) }}">Hinweise zur Batterieentsorgung</a></li>
+	</ul>
+	</div>
+	</div>
+	<div class="block">
+	<div class="block-content"><p class="img-payment "><img class="img-fluid" src="/layout/ceres1/daten/siegel.png" alt="img"></p></div>
+	</div>
+</div>
+
+<div class="tiva-html col-lg-4 col-md-6 col-xs-6">
+<div class="block m-top">
+<div class="title-block">Kontakt & anfahrt</div>
+	<div class="block-content">
+	<div class="contact-us">
+	<div class="title-content"><i class="fa fa-home" aria-hidden="true"></i><span>Abhollager & Showroom:</span></div>
+	<div class="content-contact address-contact"><p><a href="https://www.google.de/maps/place/DEKU+Reinigungsbedarf+GmbH/@50.1113539,8.7138041,17z/data=!3m1!4b1!4m5!3m4!1s0x47bd0e86f5a02fa1:0xaece422a27efe324!8m2!3d50.1113505!4d8.7159981" target="_blank">Lindleystr. 7, 60314 Frankfurt am Main</a></p></div>
+	</div>
+	<div class="contact-us">
+	<div class="title-content"><i class="fa fa-envelope" aria-hidden="true"></i><span>Email :</span></div>
+	<div class="content-contact mail-contact"><p><a href="mailto:info@dekushop.de">info@dekushop.de</a></p></div>
+	</div>
+	<div class="contact-us">
+	<div class="title-content"><i class="fa fa-phone" aria-hidden="true"></i><span>Hotline :</span></div>
+	<div class="content-contact phone-contact"><p><a href="tel:08005522600">0800 55 22 600</a></p></div>
+	</div>
+	<div class="contact-us">
+	<div class="title-content"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Öffnungszeiten :</span></div>
+	<div class="content-contact hours-contact"><p>Mo-Fr: 09 - 16 UHR</p><span>Samstags: 09 - 13 UHR</span></div>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="tiva-modules col-lg-4 col-md-6">
+<div class="block m-top">
+	<div class="block-content"><div class="title-block">Newsletter</div>
+	<div class="sub-title">Verpassen Sie keine Angebote mehr und erhalten Sie jede Woche aktuelle Informationen mit dem Dekushop-Newsletter per E-Mail.</div>
+	<div class="block-newsletter">
+
+
+{% include "CeresCoconut::newsletter2" %}
+
+	</div></div>
+</div>
+<div class="block m-top1">
+	<div class="block-content"><div class="social-content">
+	<div class="title-block">Folgen Sie uns</div>
+	<div id="social-block"><div class="social">
+	<ul class="list-inline mb-0 justify-content-end">
+	<li class="list-inline-item mb-0"><a href="https://www.facebook.com/dekushop.de/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+	<li class="list-inline-item mb-0"><a href="https://twitter.com/dekushopde" target="_blank"><i class="fa fa-twitter"></i></a></li>
+	<li class="list-inline-item mb-0"><a href="https://www.instagram.com/dekushop.de/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+	</ul>
+	</div></div></div></div>
+</div>
+<div class="block m-top1">
+	<div class="block-content"><div class="payment-content">
+	<div class="payment-image"><img class="img-fluid" src="/layout/ceres1/daten/zahlung.png" alt="img"></div>
+	</div></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="tiva-copyright">
+
+<div class="container"><div class="row">
+<div class="text-center col-lg-12 "><span>Copyright © {{ "now" | date("Y") }} | Dekushop.de | {{ trans("Ceres::Template.footerAllRightsReserved") }}
+&nbsp;&nbsp; Angebote gelten nur für Industrie, Handel, Handwerk und Gewerbe. &nbsp;&nbsp; Preise zzgl. gesetzl. MwSt.</span></div>
+</div></div>
+
+<div class="container"><div class="row">
+
+<div class="col-md-6">
+<div id="seo-text">
+	<h1>Profi-Putzmittel aus dem Großhandel</h1>
+
+	<p><strong>Sie haben eine Reinigungsfirma oder putzen privat in mehreren Haushalten? Dann wissen Sie, wie gut es ist Putzmittel zu haben, das Ihnen einen Großteil der Arbeit erleichtert. Mit einem Putzmittel von Dekushop setzen Sie auf namhafte Hersteller zu günstigen Preisen. Die Marken der Putzmittel sind ebenso vielseitig, wie die Einsatzzwecke und so finden Sie in unserem Online-Shop Putzmittel für Fenster, Böden, Teppiche, Steinoberflächen und Vieles mehr.</strong></p>
+<br>
+	<p>Als Großhandel ist es uns möglich eine riesige Auswahl an Produkten bereitzustellen und diese auch in großen Mengen anzubieten. Darüber hinaus bieten wir zahlreiche weitere Produktbereiche an, zum Beispiel <a href="https://www.dekushop.de/alle-produkte/leiter/" title="Leiter kaufen">Leitern</a>, Spendersysteme, <a href="https://www.dekushop.de/alle-produkte/muell-papiereimer/" title="Mülleimer">Mülleimer</a> aber auch Staub- und Nasssauger finden Sie bei uns. Unsere </p>
+<br>
+	<ul class="vorteile">
+	<li class="topic">Vorteile im Überblick:</li>
+	<li class="first">-	preiswerte Produkte namhafter Marken</li>
+	<li class="list">-	hochwertige Putzmittel und Sauger aller Art</li>
+	<li class="list">-	riesige Auswahl im Bereich Reinigung</li>
+	<li class="list">-	verschiedene Saugsysteme für die unterschiedlichsten Anwendungen</li>
+	<li class="list">-	Putzmittel für alle Oberflächen</li>
+	<li class="list">-	modulierbare Leitern</li>
+	</ul>
+<br><br>
+	<h2>Deku Reinigungsbedarf GmbH - Ihr Großhandel im Raum Frankfurt am Main</h2>
+
+	<p>Wir, die Deku Reinigungsbedarf GmbH, sind ein Fachgroßhandel für Hygieneartikel, Reinigungsbedarf wie <a href="https://www.dekushop.de/alle-produkte/toilettenpapier-handtuecher" title="Papierhandtücher">Papierhandtücher</a> und Arbeitsschutz. Wir verfügen über ein großes, breit gefächertes Sortiment an Produkten von weltweit bekannten Marken. Auf unserer 1.600 m² großen Lagerfläche befinden sich unterschiedlichster Reinigungsbedarf, Reinigungsgeräte sowie auch alles rund um den Arbeitsschutz von Top-Marken. </p>
+
+	<p>Darüber hinaus erhalten Sie die mit hoher Qualität ausgezeichneten Produkte zu äußerst günstigen Preisen. Sie bekommen auf Wunsch, vor Ort in unserem Abhollager, eine komplette Beratung/Schulung zu den einzelnen Produkten. Wir bieten Ihnen eine optimale Servicequalität und liefern den Reinigungsbedarf in kürzester Zeit und zuverlässig die von Ihnen bestellte Ware. Im Umkreis von 20 km im Raum Frankfurt sind bei uns mehrmals täglich Lieferungen möglich. </p><p>
+	Wir sind Montag bis Freitag von 09.00 bis 16.00 Uhr und samstags von 09.00 bis 13:00 Uhr für Sie erreichbar. Gerne können Sie auch persönlich zu unserem Abhollager in die Lindleystraße 7, 60314 Frankfurt/M. kommen. </p>
+
+</div></div>
+
+	<div class="col-md-6">
+	<div id="seo-text">
+
+	<h3>Reinigungsmittel Großhandel</h3>
+
+	<p>Auf dekushop.de, der Onlinepräsenz für unseren Reinigungsmittel-Großhandel, finden Sie alles rund um die professionelle Reinigung für den gewerblichen und privaten Bedarf. Bestellen Sie bei uns bequem online. Nicht nur Putzmittel bieten wir an, auch wenn Sie eine Leiter kaufen wollen sind wir Ihr Ansprechpartner.</p>
+
+	<p>Nutzen Sie unsere zahlreichen Angebote und das alles zu günstigen Preisen, die wir als Reinigungsmittel-Großhandel anbieten können. Profitieren Sie dabei auch von unseren Rabatten und Mengenstaffeln.
+	Sie haben Fragen zu einem Reinigungsmittel oder –Gerät aus unserem Sortiment? Dann wenden Sie sich jederzeit an unsere Außendienstmitarbeiter und lassen sich kompetent beraten. Hierzu erreichen Sie uns per E-Mail oder Telefon und können gerne einen Termin vereinbaren. </p>
+
+	<h2>Günstiger Reinigungsmittel-Shop</h2>
+
+	<p>Als günstiger Reinigungsmittel-Shop bieten wir selbstverständlich auch zahlreiche <a href="https://www.dekushop.de/alle-produkte/spendersysteme/" title="Desinfektionsmittelspender">Desinfektionsmittelspender</a> an, die sich in Größe, Füllmenge, Farbe und Material unterscheiden. Sie entscheiden, welchen Desinfektionsmittelspender Sie für Ihr Unternehmen kaufen wollen und welcher am besten zu Ihnen passt.</p>
+
+	<p>Als Reinigungsmittel-Shop haben wir auch viele weitere Spender im Angebot, so zum Beispiel Papierhandtuchspender, Toilettenpapierspender oder Spender für Hygienebeutel und Handschuhe. Sie wählen Ihre gewünschten Produkte per Klick aus und wir liefern Ihnen diese als Reinigungsmittel-Shop schnell und zuverlässig.</p>
+
+	<h3>Ihre Anlaufstelle für Profi-Reinigungsbedarf</h3>
+
+	<p>Profi-Reinigungsbedarf unterscheidet sich vor allem in einem Punkt vom herkömmlichen Bedarf: Dieser ist robust und auf eine lange Lebensdauer ausgelegt. Darüber hinaus bringen <a href="https://www.dekushop.de/alle-produkte/reinigungsmaschinen/" title="Industriestaubsauger">Industriestaubsauger</a> eine deutlich größere Leistung, da diese für den Einsatz auf großen Flächen ausgelegt sind. </p>
+
+	<p>Zu Profi-Reinigungsbedarf zählt allerdings auch, dass Sie bei uns Mülleimer kaufen können, genauso wie Spendersysteme für Seife oder Desinfektionsmittel. Entdecken Sie unseren Profi-Reinigungsbedarf und lassen Sie sich von den preiswerten Angeboten begeistern!</p>
+
+	<h2>Reinigungsmittel online</h2>
+
+	<p>Es war noch nie so einfach <a href="https://www.dekushop.de/alle-produkte/reinigungsmittel/" title="Reinigungsmittel">Reinigungsmittel</a> online zu erwerben. Reinigungsmittel kaufen Sie im Dekushop mit einem Klick. </p>
+	<p>Dabei führen wir verschiedene Marken und zahlreiche Mittel für die Säuberung der unterschiedlichsten Flächen. Sie können bei uns Reinigungsmittel online kaufen, das für Steinoberflächen geeignet ist, aber auch Mittel, die sich für Parkett, Fließen oder Teppiche eignen. Entdecken Sie die Vielfalt unseres Angebots!</p>
+
+	</div>
+	</div>
+
+</div></div>
+
+
+</div>
+</footer>
+
+
+
+{% include "CeresCoconut::mobilemenu" %}

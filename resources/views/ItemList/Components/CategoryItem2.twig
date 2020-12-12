@@ -1,0 +1,53 @@
+
+{{ component( "CeresCoconut::ItemList.Components.CategoryImageCarousel") }}
+{{ component( "CeresCoconut::ItemList.Components.ItemStoreSpecial" ) }}
+
+{% import "Ceres::Basket.Macros.AddToBasket" as AddToBasket %}
+
+{% set lang = services.sessionStorage.getLang() %}
+{% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
+
+
+{% if enableCarousel is not defined %}
+    {% if config("Ceres.item.enable_image_carousel") == "true" %}
+        {% set enableCarousel = "true" %}
+    {% else %}
+        {% set enableCarousel = "false" %}
+    {% endif %}
+{% endif %}
+
+<script type="x/template" id="vue-category-item2">
+<article>
+<div class="product product-sm-left ">
+
+<slot name="store-special">
+<item-store-special v-if="storeSpecial || item.variation.bundleType == 'bundle'"
+  :store-special="storeSpecial"
+  :recommended-retail-price="item.prices.rrp"
+  :variation-retail-price="item.prices.default"
+  :decimal-count="decimalCount"
+  :bundle-type="item.variation.bundleType"></item-store-special>
+</slot>
+
+<div class="product-img-wrap"><img class="product-img" v-bind:src="item.images.all[0].urlPreview"></div>
+<a class="product-link" :href="item | itemURL"></a>
+<div class="product-caption">
+<ul class="product-caption-rating">
+<span v-if="item.item.manufacturer.logo" style="float:left;"><img :alt="item.item.manufacturer.externalName" v-bind:src="item.item.manufacturer.logo" height="20px"></span>
+</ul>
+<h5 class="product-caption-title">${ item | itemName }</h5>
+<div class="product-caption-price"><span class="product-caption-price-new">
+
+<div>
+<span class="fiy"> ${ item.prices.default.unitPrice.formatted }</span>
+</div>
+
+</span></div><ul class="product-caption-feature-list"><li>
+<span style="font-size:10px;color:red; padding-right:10px;" v-if="item.prices.rrp && item.prices.rrp.price.value > 0 && item.prices.rrp.price.value > item.prices.default.unitPrice.value">
+statt ${ item.prices.rrp.unitPrice.formatted | itemCrossPrice } </span>
+Art.Nr: ${ item.variation.number }
+
+
+</li></ul></div></div>
+</article>
+</script>

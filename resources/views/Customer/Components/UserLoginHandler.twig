@@ -1,0 +1,34 @@
+<script type="x/template" id="vue-user-login-handler">
+<div id="login-change">
+	<!-- login -->
+	<div v-if="isLoggedIn">
+		<div id="block_myaccount_infos" class="hidden-sm-down dropdown">
+		<div class="myaccount-title">
+		<a href="#acount" data-toggle="collapse" class="acount"><i class="fa fa-user" aria-hidden="true"></i><span> Mein Konto</span><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+		</div>
+		<div id="acount" class="collapse">
+		<div class="account-list-content">
+		<div><a class="login" href="{{ urls.myAccount }}" rel="nofollow" title=""><i class="fa fa-cog"></i><span>Mein Konto </span></a></div>
+		<div><a href="{{ urls.wishList }}" title="My Wishlists"><i class="fa fa-heart"></i><span>Merkzettel</span></a></div>
+		<div><a class="login" href="#" rel="nofollow" v-logout><i class="fa fa-sign-in"></i><span>Abmelden</span></a></div>
+		</div>
+		</div>
+		</div>
+	</div>
+	<!-- !login -->
+	<div v-if="!isLoggedIn">
+		<div id="block_myaccount_infos" class="hidden-sm-down dropdown">
+		<div class="myaccount-title">
+		<a href="#acount" data-toggle="collapse" class="acount"><i class="fa fa-user" aria-hidden="true"></i><span> Konto </span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+		</div>
+		<div id="acount" class="collapse">
+		<div class="account-list-content">
+		<div><a class="login" data-toggle="modal" href="#login" @click="unmarkInputFields()"><i class="fa fa-sign-in"></i><span>Login</span></a></div>
+		<div><a class="register" data-toggle="modal" href="#registration" @click="unmarkInputFields()" v-if="showRegistration"><i class="fa fa-user"></i><span>Registrieren</span></a></div>
+		<div><a href="{{ urls.wishList }}" title="My Wishlists"><i class="fa fa-heart"></i><span>Merkzettel</span></a></div>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+</script>

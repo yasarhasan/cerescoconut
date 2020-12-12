@@ -1,0 +1,6 @@
+<script type="x/template" id="vue-item-store-special">
+<ul class="product-labels2" v-show="label.length || bundleType === 'bundle'">
+<li v-if="label.length" v-bind:class="tagClass">${ label }</li>
+<li v-else class="badge badge-bundle bg-info">{{ trans("Ceres::Template.itemBundle") }}</li>
+</ul>
+</script>

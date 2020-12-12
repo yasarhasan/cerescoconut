@@ -1,0 +1,20 @@
+{% import "CeresCoconut::Category.Macros.CategoryTree" as Tree %}
+
+<div class="row"> <div class="title-product" style="width:100%;float:left;margin: 30px 0 20px 0;">
+  <h2 style="text-align:center;">Übersicht</h2> <p style="text-align:center;">Alle Kategorien im Überblick</p></div> </div>
+
+  <div class="container mb-5">  <div class="row">
+
+
+
+    {{ Tree.get_nav_bar(
+        categories,
+        "",
+        ceresConfig.header.megamenuLevels,
+        {
+            "1": ceresConfig.header.megamenuItemsStage1,
+            "2": ceresConfig.header.megamenuItemsStage2,
+            "3": ceresConfig.header.megamenuItemsStage3
+        }
+    ) }}
+</div></div>

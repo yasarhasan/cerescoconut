@@ -1,0 +1,88 @@
+{% import "Ceres::Basket.Macros.AddToBasket" as AddToBasket %}
+{% import "Ceres::Item.Macros.AgeRestriction" as AgeRestriction %}
+
+{% set itemData = config("Ceres.item.data") | split(', ') %}
+
+
+<script type="x/template" id="vue-single-item">
+<div class="page-content container-max">
+<slot :getDataField="getDataField" :getFilteredDataField="getFilteredDataField">
+    <div class="row mt-5 position-relative">
+
+    <div class="col-3 sidebar-3 hidden-md-down list-controls">
+
+      <div class="section menu-banner d-xs-none"><div class="tiva-verticalmenu block"><div class="box-content">
+      {% include "CeresCoconut::kategorien" %}
+      </div></div></div>
+
+
+      {% include "CeresCoconut::sidebar" %}
+
+    <!--
+      <div class="sidebar-categories">
+          <div class="category-title">KATEGORIEN</div>
+          {#  include('CeresCoconut::PageDesign.Partials.Header.SideNavigation.twig')  #}
+      </div>
+    {#   LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom")   #}
+    -->
+
+
+    </div>
+
+<div class="col-12 col-lg-9">
+<div class="content">
+                  <div class="single main-product-detail">
+
+<h2><a :title="currentVariation.item.manufacturer.externalName" v-if="currentVariation.item.manufacturer.logo">
+<img class="logomenu_prod" v-bind:src="currentVariation.item.manufacturer.logo" :alt="currentVariation.item.manufacturer.externalName" /></a>
+${ currentVariation | itemName }</h2>
+<p style="color:#444; font-weight: 300; font-size: 13px;" class="has-border description" v-html="currentVariation.texts.shortDescription"></p>
+
+
+
+<div class="row">
+  <div class="col-md-5" style="float:left">
+
+        <slot name="image-carousel"></slot>
+  </div>
+
+  <div class="col-md-7" style="float:left">
+      {% include "CeresCoconut::Item.Components.SingleItem.SingleItem_Details" %}
+  </div>
+</div>
+
+
+<!-- ALTERNATIVPRODUKTE -->
+{% include "CeresCoconut::Containers.ItemLists.ItemList1" %}
+
+
+
+<div class="row">
+  <div class="col-md-12">
+
+      {% include "CeresCoconut::Item.Components.SingleItem.SingleItem_InformationTable" %}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 ">
+  <div class="title-tab-content  text-center">
+  <div class="title-product justify-content-between">
+  <img src="/layout/ceres1/daten/sale.png"><br><h2 style="text-align:center;">ANGEBOTE DER WOCHE</h2><p style="color:red">Jede Woche neue Angebote entdecken!</p><br>
+  </div></div>
+  <ul class="product-list">
+  {% include "CeresCoconut::Containers.ItemLists.ItemList3" %}
+  </ul>
+</div>
+</div>
+
+                      <slot name="ItemListContainer"></slot>
+                      <slot name="FeedbackContainer"></slot>
+                  </div>
+</div>
+</div>
+
+    </div>
+    </slot>
+    </div>
+</script>

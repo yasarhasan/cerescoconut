@@ -1,0 +1,16 @@
+{% set companyLogo  = config("Ceres.header.company_logo") %}
+{% set lang         = services.sessionStorage.getLang() %}
+{% set showHeaderNavBar = config("Ceres.header.show_navbars") %}
+{% set companyName  = trans("Ceres::Template.headerCompanyName") %}
+{% set useMegaMenu  = config("Ceres.header.megamenu_levels") > 1 %}
+
+<nav class="{% if useMegaMenu %} megamenu{%endif%}">
+
+<div>
+
+		{# includeCached('CeresCoconut::PageDesign.Partials.Header.NavigationList.twig') #}
+		{% include "CeresCoconut::PageDesign.Partials.Header.NavigationList" %}
+
+</div>
+
+</nav>
